@@ -1,0 +1,12 @@
+body {
+  background: red;
+}
+
+body .content {
+  background: yellow;
+}
+
+body .content.green {
+  background: green;
+}
+
