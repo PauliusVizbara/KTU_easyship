@@ -1,0 +1,21 @@
+.menu {
+    margin-top: 0;
+    display: flex;
+    background-color: #252527;
+    &-item{
+        padding: 20px 15px;
+        list-style-type: none;
+        a{
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+            &:hover{
+                color: #eeeeee;
+            }
+        }
+    }
+}
+
+.menu-item.active a {
+    color: #d5ff8c;
+}

@@ -12,9 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('base');
 });
 
+Route::resource('shipments', 'ShipmentController');
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+

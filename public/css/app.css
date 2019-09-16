@@ -1,0 +1,154 @@
+.item-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.item-table-wrapper {
+  flex: 1 0 auto;
+  height: 0;
+  overflow-y: scroll;
+}
+
+.item-table td {
+  line-height: 50px;
+}
+
+.item-table td span {
+  cursor: default;
+}
+
+.item-table td:first-child {
+  padding-left: 15px;
+}
+
+.item-table .table-header th {
+  text-align: left;
+  background: #444;
+  color: white;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 50px;
+}
+
+.item-table .table-header th:first-child {
+  padding-left: 15px;
+}
+
+.item-row:hover {
+  cursor: pointer;
+}
+
+.item-row:hover svg {
+  cursor: pointer;
+}
+
+.item-row:hover td {
+  background-color: #f7f7f7;
+}
+
+.item-row + .item-row td {
+  border-top: 1px solid #e2e7f2;
+}
+
+.item-actions {
+  padding-left: 10px;
+}
+
+.item-actions a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.item-actions a:hover {
+  color: #92ce29;
+}
+
+.map {
+  flex: 0 0 40%;
+}
+
+.menu {
+  margin-top: 0;
+  display: flex;
+  background-color: #252527;
+}
+
+.menu-item {
+  padding: 20px 15px;
+  list-style-type: none;
+}
+
+.menu-item a {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.menu-item a:hover {
+  color: #eeeeee;
+}
+
+.menu-item.active a {
+  color: #d5ff8c;
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  display: flex;
+  height: 100vh;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  background-color: #f2f2f2;
+}
+
+.content {
+  padding-left: 50px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+.controls-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.controls-container a {
+  background: #444;
+  text-align: center;
+  color: white;
+  padding: 10px;
+  flex: 0 0 150px;
+  text-decoration: none;
+}
+
+.controls-container a:hover {
+  color: #d5ff8c;
+}
+
+.controls-container a + .controls-container a {
+  margin-left: 20px;
+}
+
+.controls-container--top {
+  margin-bottom: 20px;
+}
+
+* {
+  font-family: "PT Sans", sans-serif;
+}
+
