@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('base');
 });
+
+
+Route::resource('shipments', 'ShipmentController');

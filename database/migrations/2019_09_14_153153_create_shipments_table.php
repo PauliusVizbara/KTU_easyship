@@ -16,7 +16,6 @@ class CreateShipmentsTable extends Migration
         Schema::create('shipments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('id');
             $table->string('name');
             $table->double('weight');
             $table->string('address');
