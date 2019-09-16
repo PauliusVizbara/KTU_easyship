@@ -1,0 +1,117 @@
+<html>
+	<head>
+		<title>Siuntos</title>
+		<link rel="stylesheet" href="style.css" />
+		<script src="https://kit.fontawesome.com/744b059e43.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" />
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+			integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+			crossorigin=""
+		/>
+		<script
+			src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+			integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+			crossorigin=""
+		></script>
+	</head>
+	<body>
+		<div class="page">
+			<div class="content-container">
+				<ul class="menu">
+					<li class="menu-item"><a href="index.html">Shipments</a></li>
+					<li class="menu-item active"><a href="warehouses.html">Warehouses</a></li>
+					<li class="menu-item"><a href="clients.html">Clients</a></li>
+					<li class="menu-item"><a href="about.html">About</a></li>
+				</ul>
+				<div class="content">
+					<h2 class="title"><i class="fas fa-warehouse fa-fw"></i>Warehouses</h2>
+
+					<table class="items-table">
+						<tr class="items-table-header">
+							<th>ID</th>
+							<th>Name</th>
+							<th>Date ordered</th>
+							<th>Address</th>
+							<th>City</th>
+							<th>Status</th>
+							<th>Actions</th>
+						</tr>
+						<tr onClick="setMapView(54.919102,23.9338629)" class="item-row">
+							<td><span>1</span></td>
+							<td><span>Item name</span></td>
+							<td><span>2019-09-18</span></td>
+							<td><span>Savanorių pr. 178</span></td>
+							<td><span>Kaunas</span></td>
+							<td><span>Ordered</span></td>
+							<td>
+								<span class="item-actions">
+									<i class="fas fa-pen fa-fw"></i>
+									<i class="fa fa-trash fa-fw"></i>
+								</span>
+							</td>
+						</tr>
+						<tr onClick="setMapView(54.897096, 23.905483)" class="item-row">
+							<td><span>1</span></td>
+							<td><span>Item name</span></td>
+							<td><span>2019-09-18</span></td>
+							<td><span>Savanorių pr. 178</span></td>
+							<td><span>Kaunas</span></td>
+							<td><span>Ordered</span></td>
+							<td>
+								<span class="item-actions">
+									<i class="fas fa-pen fa-fw"></i>
+									<i class="fa fa-trash fa-fw"></i>
+								</span>
+							</td>
+						</tr>
+						<tr onClick="setMapView(55.921639, 23.312599)" class="item-row">
+							<td><span>1</span></td>
+							<td><span>Item name</span></td>
+							<td><span>2019-09-18</span></td>
+							<td><span>Savanorių pr. 178</span></td>
+							<td><span>Kaunas</span></td>
+							<td><span>Ordered</span></td>
+							<td>
+								<span class="item-actions">
+									<i class="fas fa-pen fa-fw"></i>
+									<i class="fa fa-trash fa-fw"></i>
+								</span>
+							</td>
+						</tr>
+						<tr onClick="setMapView(57.147706, 18.344630)" class="item-row">
+							<td><span>1</span></td>
+							<td><span>Item name</span></td>
+							<td><span>2019-09-18</span></td>
+							<td><span>Savanorių pr. 178</span></td>
+							<td><span>Kaunas</span></td>
+							<td><span>Ordered</span></td>
+							<td>
+								<span class="item-actions">
+									<i class="fas fa-pen fa-fw"></i>
+									<i class="fa fa-trash fa-fw"></i>
+								</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="map" id="main-map"></div>
+		</div>
+
+		<script>
+			var map = L.map('main-map').setView([54.897581, 23.909723], 13)
+
+			L.tileLayer('https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=ltrALA6k9d2bkEeRn8Fn', {
+				attribution:
+					'<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>'
+			}).addTo(map)
+
+			const setMapView = (lat, long) => {
+				map.setView([lat, long], 15)
+				L.marker([lat, long]).addTo(map)
+			}
+		</script>
+	</body>
+</html>
