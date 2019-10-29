@@ -24,9 +24,22 @@ body{
 
 }
 
+.page-header{
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-between;
+    h2{
+        svg{
+            padding-right: 10px;
+        }
+    }
+}
+
 .controls-container{
     display: flex;
     justify-content: flex-end;
+
     a{
         background: #444;
         text-align: center;
@@ -40,8 +53,5 @@ body{
         & + & {
             margin-left: 20px;
         }
-    }
-    &--top{
-        margin-bottom: 20px;
     }
 }

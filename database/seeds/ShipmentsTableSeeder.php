@@ -18,7 +18,8 @@ class ShipmentsTableSeeder extends Seeder
             'lat' => 55,
             'long' => 55,
             'city' => 'Kaunas',
-            'status' => 1,
+            'status_id' => 1,
+            'user_id' => 1,
         ]);
     }
 }

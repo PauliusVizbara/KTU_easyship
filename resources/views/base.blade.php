@@ -5,7 +5,6 @@
     <title>IS Karkasasi</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css"/>
     <script defer src="{{ asset('icons/all.js') }}"></script>
-
     <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap"
@@ -29,9 +28,9 @@
     <div class="content-container">
         <ul class="menu">
             <li class="menu-item {{ request()->is('shipments*') ? 'active' : '' }}"><a href="{{route('shipments.index')}}">Shipments</a></li>
-            <li class="menu-item"><a href="warehouses.html">Warehouses</a></li>
-            <li class="menu-item"><a href="clients.html">Clients</a></li>
-            <li class="menu-item"><a href="about.html">About</a></li>
+            <li class="menu-item {{ request()->is('shipment-statuses*') ? 'active' : '' }}"><a href="{{route('shipment-statuses.index')}}">Statuses</a></li>
+            <li class="menu-item {{ request()->is('clients') ? 'active' : '' }}"><a href="{{route('clients.index')}}">Clients</a></li>
+            <li class="menu-item {{ request()->is('about') ? 'active' : '' }}"><a href="/about">About</a></li>
         </ul>
         <div class="content">
 

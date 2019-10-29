@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\ShipmentStatus;
+use App\User;
 use Illuminate\Http\Request;
 use App\Shipment;
 
@@ -14,9 +16,9 @@ class ShipmentController extends Controller
      */
     public function index()
     {
-        $shipments = Shipment::all();
+        $shipments = Shipment::orderBy('name','desc')->get();
 
-        return view('shipments.index', compact('shipments'));
+        return view('shipments.index', compact(array('shipments')));
     }
 
     /**
@@ -32,13 +34,13 @@ class ShipmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
+            'name' => 'required',
         ]);
         $shipment = new Shipment([
             'name' => $request->get('name'),
@@ -47,7 +49,9 @@ class ShipmentController extends Controller
             'lat' => $request->get('lat'),
             'long' => $request->get('long'),
             'city' => $request->get('city'),
-            'status' => $request->get('status')
+            'status_id' => $request->get('status'),
+            'user_id' => $request->get('user_id'),
+            'courier_id' => $request->get('courier_id'),
         ]);
         $shipment->save();
         return redirect('/shipments')->with('success', 'Contact saved!');
@@ -56,7 +60,7 @@ class ShipmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -67,7 +71,7 @@ class ShipmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -78,8 +82,8 @@ class ShipmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -90,7 +94,7 @@ class ShipmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

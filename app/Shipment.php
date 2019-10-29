@@ -14,5 +14,26 @@ class Shipment extends Model
         'long',
         'city',
         'status',
+        'courier',
+        'status_id',
+        'user_id',
+        'courier_id',
     ];
+
+    function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+    function status()
+    {
+        return $this->hasOne('App\ShipmentStatus','id','status_id');
+    }
+
+    function courier()
+    {
+        return $this->belongsTo('App\Courier');
+    }
+
 }
+
+

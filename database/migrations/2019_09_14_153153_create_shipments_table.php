@@ -22,7 +22,9 @@ class CreateShipmentsTable extends Migration
             $table->double('lat');
             $table->double('long');
             $table->string('city');
-            $table->integer('status');
+            $table->integer('status_id');
+            $table->integer('user_id');
+            $table->integer('courier_id');
         });
     }
 
