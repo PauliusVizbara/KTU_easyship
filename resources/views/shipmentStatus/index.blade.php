@@ -13,12 +13,14 @@
             <tr class="table-header">
                 <th>ID</th>
                 <th>Name</th>
+                <th>Shipment count</th>
                 <th>Actions</th>
             </tr>
             @foreach($shipmentStatuses as $shipment)
                 <tr class="item-row">
                     <td><span>{{$shipment->id}}</span></td>
                     <td><span>{{$shipment->name}}</span></td>
+                    <td><span>{{count($shipment->shipments)}}</span></td>
                     <td>
                 <span class="item-actions">
                   <a href="{{ route('shipments.edit',$shipment->id)}}"><i class="fas fa-pen fa-fw"></i></a>

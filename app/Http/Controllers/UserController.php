@@ -21,10 +21,6 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        foreach($users as $user){
-            dump($user->shipments);
-        }
-
         return view('clients.index', compact('users'));
 
     }

@@ -34,13 +34,19 @@
                     <td>
                 <span class="item-actions">
                   <a href="{{ route('shipments.edit',$shipment->id)}}"><i class="fas fa-pen fa-fw"></i></a>
-                  <i class="fa fa-trash fa-fw"></i>
+                    <form style="padding: 0; margin: 5px" action="{{ route('shipments.destroy', $shipment->id)}}" method="post">
+                  {{ csrf_field() }}
+                        @method('DELETE')
+                   <button style="display: inline-block" type="submit"><i class="fa fa-trash fa-fw"></i></button>
+                </form>
                 </span>
                     </td>
                 </tr>
             @endforeach
         </table>
+
     </div>
+    {{$shipments->links()}}
     <p>End of content</p>
 @endsection
 

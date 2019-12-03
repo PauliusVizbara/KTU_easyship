@@ -14,10 +14,4 @@ class Courier extends Model
     function shipments(){
         return $this->hasMany('App\Shipment');
     }
-
-
-//    function shipments()
-//    {
-//        return $this->hasMany('App\Shipment');
-//    }
 }

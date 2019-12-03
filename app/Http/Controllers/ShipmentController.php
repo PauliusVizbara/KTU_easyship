@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Courier;
 use App\ShipmentStatus;
 use App\User;
 use Illuminate\Http\Request;
@@ -16,9 +17,9 @@ class ShipmentController extends Controller
      */
     public function index()
     {
-        $shipments = Shipment::orderBy('name','desc')->get();
+        $shipments = Shipment::orderBy('name', 'desc')->paginate(10);
 
-        return view('shipments.index', compact(array('shipments')));
+        return view('shipments.index', compact('shipments'));
     }
 
     /**
@@ -28,7 +29,12 @@ class ShipmentController extends Controller
      */
     public function create()
     {
-        return view('shipments.create');
+        $users = User::all();
+        $couriers = Courier::all();
+        $statuses = ShipmentStatus::all();
+
+        return view('shipments.create', compact( 'users', 'couriers', 'statuses'));
+
     }
 
     /**
@@ -49,7 +55,7 @@ class ShipmentController extends Controller
             'lat' => $request->get('lat'),
             'long' => $request->get('long'),
             'city' => $request->get('city'),
-            'status_id' => $request->get('status'),
+            'status_id' => $request->get('status_id'),
             'user_id' => $request->get('user_id'),
             'courier_id' => $request->get('courier_id'),
         ]);
@@ -76,7 +82,12 @@ class ShipmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $shipment = Shipment::find($id);
+        $users = User::all();
+        $couriers = Courier::all();
+        $statuses = ShipmentStatus::all();
+
+        return view('shipments.edit', compact('shipment', 'users', 'couriers', 'statuses'));
     }
 
     /**
@@ -88,7 +99,31 @@ class ShipmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $newShipment = new Shipment([
+            'weight' => $request->get('weight'),
+            'name' => $request->get('name'),
+            'address' => $request->get('address'),
+            'lat' => $request->get('lat'),
+            'long' => $request->get('long'),
+            'city' => $request->get('city'),
+            'status_id' => $request->get('status_id'),
+            'user_id' => $request->get('user_id'),
+            'courier_id' => $request->get('courier_id'),
+        ]);
+
+        $shipment = Shipment::find($id);
+
+        $shipment->name = $request->get('name');
+        $shipment->weight = $request->get('weight');
+        $shipment->address = $request->get('address');
+        $shipment->city = $request->get('city');
+        $shipment->status_id = $request->get('status_id');
+
+        $shipment->save();
+
+        return redirect('/shipments')->with('success', 'Contact saved!');
+
     }
 
     /**
@@ -99,6 +134,14 @@ class ShipmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+
+        Shipment::find($id)->delete();
+
+        return redirect('/shipments')->with('success', 'Contact saved!');
     }
+
+
+
+
 }

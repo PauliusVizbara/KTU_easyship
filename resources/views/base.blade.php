@@ -22,15 +22,28 @@
         crossorigin=""
     ></script>
 
+
 </head>
 <body>
 <div class="page">
     <div class="content-container">
         <ul class="menu">
-            <li class="menu-item {{ request()->is('shipments*') ? 'active' : '' }}"><a href="{{route('shipments.index')}}">Shipments</a></li>
-            <li class="menu-item {{ request()->is('shipment-statuses*') ? 'active' : '' }}"><a href="{{route('shipment-statuses.index')}}">Statuses</a></li>
-            <li class="menu-item {{ request()->is('clients') ? 'active' : '' }}"><a href="{{route('clients.index')}}">Clients</a></li>
+            <li class="menu-item {{ request()->is('shipments*') ? 'active' : '' }}"><a
+                    href="{{route('shipments.index')}}">Shipments</a></li>
+            <li class="menu-item {{ request()->is('shipment-statuses*') ? 'active' : '' }}"><a
+                    href="{{route('shipment-statuses.index')}}">Statuses</a></li>
+            <li class="menu-item {{ request()->is('clients') ? 'active' : '' }}"><a href="{{route('clients.index')}}">Clients</a>
+            </li>      <li class="menu-item {{ request()->is('couriers') ? 'active' : '' }}"><a href="{{route('couriers')}}">Couriers</a>
+            </li>
             <li class="menu-item {{ request()->is('about') ? 'active' : '' }}"><a href="/about">About</a></li>
+
+            <li class="menu-item"><a href="/">
+                    @guest
+                        Guest
+                    @else
+                        {{ Auth::user()->name }}
+                    @endguest
+                </a></li>
         </ul>
         <div class="content">
 
